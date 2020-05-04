@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+<script src="https://unpkg.com/jquery"></script>
+<nav class="nav bg-dark py-3">
+    <a class="nav-link active" href="#">Deez'Web</a>
+    <a class="nav-link" href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+    <a class="nav-link" href="./pages/search.html"><i class="fas fa-search"></i> Rechercher un titre</a>
+    <a class="nav-link" href="#">Mes favoris</a>
+    <a class="nav-link" href="#">Mes playlists</a>
+</nav>
+<main class="container-fluid ">
+    <h1>Recherche</h1>
+    <p>Recherchez un titre sur Deezer en utilisantle formulaire suivant :</p>
+    <form class="card form-inline">
+        <div class="form-row align-items-center">
+            <label for="exampleInputEmail1">Titre :</label>
+            <input type="text" class="form-control " id="userInput" aria-describedby="emailHelp"
+                   placeholder="Enter email">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Album</option>
+                    <option value="1">Artiste</option>
+                    <option value="2">Musique</option>
+                    <option value="3">Les plus populaires</option>
+                    <option value="4">Les mieux notés</option>
+                </select>
+            </div>
+
+            <div class="col-auto my-1">
+                <button class="btn btn-primary" type="button" onclick="searchUserInput()">Search</button>
+            </div>
+
+        </div>
+    </form>
+
+    <div id="audioList">
+        <button onclick="createAudio()">Show Audio</button>
+    </div>
+</main>
+<script type="text/javascript" src="../script.js"></script>
+</body>
+</html>

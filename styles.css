@@ -1,1 +1,12 @@
 @import url('./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css');
+
+.audioStyle {
+    min-width: 400px;
+    height: auto;
+    object-fit: inherit;
+}
+#audioList{
+    height: 500px;
+    width: 500px;
+
+}
