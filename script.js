@@ -1,6 +1,6 @@
 let deezerArray = [];
 const localStorage = window.localStorage;
-
+let localStorageKey = localStorage.length;
 
 function getDataFromApi() {
     return $.ajax({
@@ -25,7 +25,7 @@ function searchUserInput() {
         console.log("Résultat :", result.data);
         result.data.forEach((song, index) => {
             deezerArray.push(song);
-            createAudio(index, song);
+            createAudio(index, song , 'audioList');
         });
 
         console.log('Array', deezerArray)
@@ -37,7 +37,8 @@ function test() {
     console.log(userInput);
 }
 
-function createAudio(index, deezerItem) {
+function createAudio(index, deezerItem ,  divName) {
+
     const audioDiv = document.createElement('div');
     audioDiv.id = `audio_${index}`;
     audioDiv.classList.add("card", "audio", "col-3", "mr-3");
@@ -60,9 +61,10 @@ function createAudio(index, deezerItem) {
     favButton.classList.add("btn", "btn-info");
     favButton.innerHTML = "Ajouter aux favoris";
     favButton.onclick = function () {
-        addToFavorite(index, deezerItem);
+        addToFavorite(localStorageKey, deezerItem);
+        localStorageKey += 1;
     };
-    $('#audioList').append(audioDiv);
+    $(`#${divName}`).append(audioDiv);
     document.getElementById(`audio_${index}`).append(audioImg, audioTitle, audioAlbum, audio, favButton);
 }
 
@@ -91,7 +93,12 @@ function removeFromStorage(key){
 }
 
 function getRandomFav() {
-    console.log(localStorage.getItem(Math.floor(Math.random() * ((localStorage.length - 1)))));
+    const randomFav = localStorage.getItem(Math.floor(Math.random() * ((localStorage.length - 1))));
+    console.log(JSON.parse(randomFav));
+    createAudio('0' , JSON.parse(randomFav), 'audioRandom');
 }
 
 // getSingleItem('2');
+function randomGenerator() {
+
+}
