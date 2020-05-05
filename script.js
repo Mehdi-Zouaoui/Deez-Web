@@ -25,6 +25,7 @@ function searchUserInput() {
         console.log("Résultat :", result.data);
         result.data.forEach(song => {
             deezerArray.push(song);
+            createAudio(song.preview);
         });
 
         console.log('Array' , deezerArray)
@@ -34,13 +35,16 @@ function test() {
     let userInput = (document.getElementById('userInput').value).toLowerCase();
     console.log(userInput);
 }
-function createAudio(){
-    console.log(deezerArray[0]);
+function createAudio(url){
+
     const audio = document.createElement('audio');
-    audio.src = deezerArray[0].preview;
+    audio.src = url;
     audio.classList.add("audioStyle");
+    audio.controls = true;
     console.log(audio);
-   $('#audioList').innerHTML(audio)
+    document.body.appendChild(audio);
+   $('#audioList').append(audio)
+
 }
 
 function pushDataInStorage(){

@@ -2,7 +2,7 @@
 
 .audioStyle {
     min-width: 400px;
-    height: auto;
+    height: 200px;
     object-fit: inherit;
 }
 #audioList{
