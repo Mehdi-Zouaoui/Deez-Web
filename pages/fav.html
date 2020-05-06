@@ -5,31 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <title>Document</title>
 </head>
 <body>
 <script src="https://unpkg.com/jquery"></script>
-<script>
-
-</script>
-
 <nav class="nav bg-dark py-3">
     <a class="nav-link active" href="#">Deez'Web</a>
-    <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
-    <a class="nav-link" href="./pages/search.html"><i class="fas fa-search"></i> Rechercher un titre</a>
-    <a class="nav-link" href="./pages/fav.html">Mes favoris</a>
+    <a class="nav-link" href="/index.html"><i class="fas fa-home"></i> Accueil</a>
+    <a class="nav-link" href="./search.html"><i class="fas fa-search"></i> Rechercher un titre</a>
+    <a class="nav-link" href="#">Mes favoris</a>
     <a class="nav-link" href="#">Mes playlists</a>
 </nav>
-<main class="container-fluid text-center">
-    <h1 class="display-3 my-5">Welcome to your Deez'Web</h1>
-    <div id="audioRandom" class="d-flex justify-content-center no-gutter"></div>
-    <button onclick="getRandomFav()">Choisir une autre musique</button>
+<main class="container-fluid ">
+    <h1>Mes favoris</h1>
+    <p>La liste de vos favoris</p>
+    <div id="favList" class="d-flex flex-wrap justify-content-center p-1 no-gutter">
+
+    </div>
+    <button onclick="getFavListe()">Your Favs</button>
 </main>
-<script type="text/javascript" src="script.js"></script>
-<script>getRandomFav()</script>
+<script type="text/javascript" src="../script.js"></script>
+<script>getFavListe()</script>
 </body>
 </html>

@@ -17,7 +17,7 @@
     <a class="nav-link active" href="#">Deez'Web</a>
     <a class="nav-link" href="/index.html"><i class="fas fa-home"></i> Accueil</a>
     <a class="nav-link" href="./pages/search.html"><i class="fas fa-search"></i> Rechercher un titre</a>
-    <a class="nav-link" href="#">Mes favoris</a>
+    <a class="nav-link" href="./fav.html">Mes favoris</a>
     <a class="nav-link" href="#">Mes playlists</a>
 </nav>
 <main class="container-fluid ">
@@ -30,8 +30,8 @@
                    placeholder="Enter email">
             <div class="col-auto my-1">
                 <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Album</option>
+                <select class="custom-select mr-sm-2" id="searchOptions">
+                    <option value="ALBUM_ASC">Album</option>
                     <option value="ARTIST_ASC">Artiste</option>
                     <option value="TRACK_ASC">Musique</option>
                     <option value="RANKING">Les plus populaires</option>
