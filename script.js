@@ -2,21 +2,22 @@ let deezerArray = [];
 const localStorage = window.localStorage;
 let localStorageKey = localStorage.length;
 
-function getDataFromApi() {
-    return $.ajax({
-        url: `https://api.deezer.com/search?q=eminem&output=jsonp`,
-        dataType: "jsonp",
-    }).then((result) => {
-        console.log("Résultat :", result.data);
-        result.data.forEach(song => {
-            deezerArray.push(song);
-
-        });
-
-    });
-}
+// function getDataFromApi() {
+//     return $.ajax({
+//         url: `https://api.deezer.com/search?q=eminem&output=jsonp`,
+//         dataType: "jsonp",
+//     }).then((result) => {
+//         console.log("Résultat :", result.data);
+//         result.data.forEach(song => {
+//             deezerArray.push(song);
+//
+//         });
+//
+//     });
+// }
 
 function searchUserInput() {
+    $('#audioList').empty();
     const searchOption = $("#searchOptions").val();
     let userInput = (document.getElementById('userInput').value).toLowerCase();
     console.log(`https://api.deezer.com/search?q=${userInput}&order=${searchOption}&output=jsonp`);
@@ -47,6 +48,7 @@ function test() {
 }
 
 function createAudio(index, deezerItem, divName) {
+    // $(`#${divName}`).empty();
     const audioDiv = document.createElement('div');
     audioDiv.id = `audio_${index}`;
     audioDiv.classList.add("card", "audio", "col-3", "mr-3");
@@ -73,6 +75,7 @@ function createAudio(index, deezerItem, divName) {
         localStorageKey += 1;
     };
     $(`#${divName}`).append(audioDiv);
+
     document.getElementById(`audio_${index}`).append(audioImg, audioTitle, audioAlbum, audio, favButton);
 }
 
@@ -100,14 +103,17 @@ function addToFavorite(index, item) {
 function removeFromStorage(key) {
     localStorage.removeItem(key);
 }
-function getFavListe(){
+
+function getFavListe() {
     const favList = {...localStorage};
-    Object.keys(favList).map(function(key, index){
-        createAudio(index,JSON.parse(favList[key]),'favList');
+    Object.keys(favList).map(function (key, index) {
+        createAudio(index, JSON.parse(favList[key]), 'favList');
     })
 
 }
+
 function getRandomFav() {
+    $('#audioRandom').empty();
     const randomFav = localStorage.getItem(Math.floor(Math.random() * ((localStorage.length - 1))));
     console.log(JSON.parse(randomFav));
     createAudio('0', JSON.parse(randomFav), 'audioRandom');
