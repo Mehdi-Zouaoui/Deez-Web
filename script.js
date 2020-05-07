@@ -1,20 +1,13 @@
 let deezerArray = [];
 const localStorage = window.localStorage;
-let localStorageKey = localStorage.length;
-
-// function getDataFromApi() {
-//     return $.ajax({
-//         url: `https://api.deezer.com/search?q=eminem&output=jsonp`,
-//         dataType: "jsonp",
-//     }).then((result) => {
-//         console.log("Résultat :", result.data);
-//         result.data.forEach(song => {
-//             deezerArray.push(song);
-//
-//         });
-//
-//     });
-// }
+let oldSearch = [];
+const myFavs = {...localStorage};
+let tab = [];
+Object.keys(myFavs).map(function (key, index) {
+       tab.push(JSON.parse(myFavs[key]).id);
+    }
+);
+console.log(tab);
 
 function searchUserInput() {
     $('#audioList').empty();
@@ -47,8 +40,9 @@ function test() {
     console.log(userInput);
 }
 
-function createAudio(index, deezerItem, divName) {
+function createAudio(index , deezerItem, divName) {
     // $(`#${divName}`).empty();
+    console.log(deezerItem);
     const audioDiv = document.createElement('div');
     audioDiv.id = `audio_${index}`;
     audioDiv.classList.add("card", "audio", "col-3", "mr-3");
@@ -68,24 +62,25 @@ function createAudio(index, deezerItem, divName) {
     audio.classList.add("audioStyle");
     audio.controls = true;
     const favButton = document.createElement('button');
-    favButton.classList.add("btn", "btn-info");
-    favButton.innerHTML = "Ajouter aux favoris";
-    favButton.onclick = function () {
-        addToFavorite(localStorageKey, deezerItem);
-        localStorageKey += 1;
-    };
+    let isFav = tab.find(id => id === deezerItem.id);
+    if(!isFav){
+        favButton.classList.add("btn", "btn-info");
+        favButton.innerHTML = "Ajouter aux favoris";
+        favButton.onclick = function () {
+            addToFavorite(deezerItem.id, deezerItem);
+        };
+    }else {
+        favButton.classList.add("btn", "btn-danger");
+        favButton.innerHTML = "Retirer des favoris";
+        console.log(deezerItem.id);
+        favButton.onclick = function () {
+            removeFromStorage(deezerItem.id);
+        };
+    }
+
     $(`#${divName}`).append(audioDiv);
 
     document.getElementById(`audio_${index}`).append(audioImg, audioTitle, audioAlbum, audio, favButton);
-}
-
-function pushDataInStorage() {
-    console.log(`we're in`);
-    searchUserInput().then(() => {
-        deezerArray.forEach((item, index) => {
-            localStorage.setItem(index, JSON.stringify(item));
-        })
-    })
 }
 
 function clearStorage() {
@@ -96,11 +91,12 @@ function getSingleItem(index) {
     console.log(localStorage.getItem(index));
 }
 
-function addToFavorite(index, item) {
-    localStorage.setItem(index, JSON.stringify(item));
+function addToFavorite(key, item) {
+    localStorage.setItem(key, JSON.stringify(item));
 }
 
 function removeFromStorage(key) {
+    console.log(key + 'removed');
     localStorage.removeItem(key);
 }
 
