@@ -129,14 +129,6 @@ function createAudio(index, deezerItem, divName) {
 
 }
 
-function clearStorage() {
-    localStorage.clear()
-}
-
-function getSingleItem(index) {
-    console.log(localStorage.getItem(index));
-}
-
 function addToFavorite(key, item) {
     localStorage.setItem(key, JSON.stringify(item));
 }
@@ -159,9 +151,4 @@ function getRandomFav() {
     const randomFav = localStorage.getItem(tab[Math.floor(Math.random() * ((tab.length - 1)))]);
     console.log(JSON.parse(randomFav));
     createAudio('0', JSON.parse(randomFav), 'audioRandom');
-}
-
-// getSingleItem('2');
-function randomGenerator() {
-
 }
