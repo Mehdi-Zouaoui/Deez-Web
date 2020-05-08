@@ -32,6 +32,8 @@ function getMoreResult() {
                 createAudio(newIndex, song, 'audioList');
             })
         }
+    }).catch(e => {
+        alert('Veuillez chercher un titre ou un artiste');
     });
 }
 
@@ -65,7 +67,7 @@ function searchUserInput() {
         }
     }).catch(err => {
         console.log(err);
-        $('body').append('<div id="test">Test</div>');
+        $('body').append('<div id="test" class="text-center h3">Veuillez vous connecter à internet </div>');
     });
 
 }
