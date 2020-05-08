@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 <body>
@@ -18,16 +19,15 @@
 </script>
 
 <nav class="nav bg-dark py-3">
-    <a class="nav-link active" href="#">Deez'Web</a>
-    <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
-    <a class="nav-link" href="./pages/search.html"><i class="fas fa-search"></i> Rechercher un titre</a>
-    <a class="nav-link" href="./pages/fav.html">Mes favoris</a>
-    <a class="nav-link" href="#">Mes playlists</a>
+    <a class="nav-link text-light font-weight-bold">Deez'Web</a>
+    <a class="nav-link  text-light" href="#"><i class="fa fa-home"></i> Accueil</a>
+    <a class="nav-link  text-light" href="./pages/search.html"><i class="fa fa-search"></i> Rechercher un titre</a>
+    <a class="nav-link text-light" href="./pages/fav.html"><i class="fa fa-heart"></i> Mes favoris</a>
 </nav>
 <main class="container-fluid text-center">
     <h1 class="display-3 my-5">Welcome to your Deez'Web</h1>
     <div id="audioRandom" class="d-flex justify-content-center no-gutter"></div>
-    <button onclick="getRandomFav()" class="btn btn-primary">Choisir une autre musique</button>
+    <button onclick="getRandomFav()" class="btn btn-primary"><i class="fa fa-random"></i> Choisir une autre musique</button>
 </main>
 <script type="text/javascript" src="script.js"></script>
 <script>getRandomFav()</script>
