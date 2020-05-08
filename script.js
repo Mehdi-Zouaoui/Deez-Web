@@ -55,9 +55,7 @@ function searchUserInput() {
         dataType: "jsonp",
     }).then((result) => {
         next = result.next;
-        console.log(next);
         if (result.data.length) {
-            console.log("Résultat :", result.data);
             result.data.forEach((song, index) => {
                 createAudio(index, song, 'audioList');
                 sessionStorage.setItem(index, JSON.stringify(song));
@@ -66,14 +64,12 @@ function searchUserInput() {
             $('body').append('<div id="test">Pas de résultat pour la recherche , veuillez réessayer</div>');
         }
     }).catch(err => {
-        console.log(err);
         $('body').append('<div id="test" class="text-center h3">Veuillez vous connecter à internet </div>');
     });
 
 }
 
 function buttonTest(button, item) {
-    console.log('YOOOOOOOO');
     let isFav = tab.find(id => id === item.id);
     if (!isFav) {
         button.classList.add("btn-success");
@@ -88,7 +84,6 @@ function buttonTest(button, item) {
     } else {
         button.classList.add("btn-danger");
         button.innerHTML = "Retirer des favoris";
-        console.log(item.id);
         button.onclick = function () {
             console.log('Removed from fav');
             removeFromStorage(item.id);
@@ -151,6 +146,5 @@ function getFavListe() {
 function getRandomFav() {
     $('#audioRandom').empty();
     const randomFav = localStorage.getItem(tab[Math.floor(Math.random() * ((tab.length - 1)))]);
-    console.log(JSON.parse(randomFav));
     createAudio('0', JSON.parse(randomFav), 'audioRandom');
 }
